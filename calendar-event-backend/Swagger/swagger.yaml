@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: Add Event - OpenAPI 3.0
+  description: |-
+    Add new event
+
+servers:
+  - url: http://localhost:4000/
+tags:
+  - name: Add Event
+    description: user will add event
+    externalDocs:
+      description: Find out more
+      url: https://asif-mehmood.com
+
+paths:
+  /api/event:
+    post:
+      tags:
+        - AddEvent-API
+      summary: Add a new event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventEntity'
+      responses:
+        201:
+          description: Event Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventEntity'
+        500:
+          description: Internal server error
+
+components:
+  schemas:
+    EventEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Hiking'
+        eventDate:
+          type: string
+          example: '18:10'
